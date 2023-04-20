@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "lA9TMbvApGIrGk5j0sU5meT5CVLaAPfDdc4HYI+HQog=",
+  "Source": "MedicineReminderAPI",
+  "BasePath": "_content/MedicineReminderAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

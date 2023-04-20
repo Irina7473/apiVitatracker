@@ -44,7 +44,9 @@ namespace MedicineReminderAPI.Controllerss
             // проверка почты на уникальность
             var existUsers = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);           
             if (existUsers != null) return BadRequest(new { errorText = "User with this email already exists" });
-           
+            //проверка валидации модели на успешность
+            if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
