@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace MedicineReminderAPI.Models
 {
@@ -20,12 +21,16 @@ namespace MedicineReminderAPI.Models
 
         [Column(TypeName = "varchar(120)")]
         [Required(ErrorMessage = "Не указан пароль")]
-        [RegularExpression(@"[A-Za-z0-9]{6,16}", ErrorMessage = "Некорректный пароль")]
+        //[RegularExpression(@"^[A-Za-z0-9]{6,16}$", ErrorMessage = "Некорректный пароль")]
         private string password;
         public string Password
         {
             get { return password; }
-            set { password = BCrypt.Net.BCrypt.HashPassword(value); }
+            set {                
+                string pattern = @"^[A-Za-z0-9]{6,16}$";
+                if (Regex.IsMatch(value, pattern))
+                        password = BCrypt.Net.BCrypt.HashPassword(value);                    
+            }
         }
 
         public string? Avatar { get; set; }

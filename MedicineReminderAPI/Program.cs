@@ -7,6 +7,7 @@ using System.Text;
 using MedicineReminderAPI.Models;
 using MedicineReminderAPI.Service;
 using MedicineReminderAPI;
+using System.Net;
 
 
 //Инициализирует экземпляр WebApplicationBuilder с предварительно настроенными значениями по умолчанию.
@@ -16,7 +17,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
 
 //Подключение к базе данных  
-string connection = builder.Configuration.GetConnectionString("RelisConnection");
+string connection = builder.Configuration.GetConnectionString("RemoteConnection");
 builder.Services.AddDbContext<AppApiContext>(options => options.UseMySql(connection,
      new MySqlServerVersion(new Version(8, 0, 31))));
 
@@ -91,6 +92,14 @@ builder.Services.AddHttpsRedirection(options =>
     options.HttpsPort = 44344;
 });*/
 
+if (!builder.Environment.IsDevelopment())
+{
+    builder.Services.AddHttpsRedirection(options =>
+    {
+        options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+        options.HttpsPort = 443;
+    });
+}
 
 // Веб-приложение, используемое для настройки конвейера HTTP и маршрутов.
 var app = builder.Build();
@@ -106,7 +115,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }*/
-
+/*
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+*/
 //ПО промежуточного слоя перенаправления HTTPS для перенаправления HTTP-запросов на HTTPS
 //app.UseHttpsRedirection();
 
