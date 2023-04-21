@@ -8,6 +8,7 @@ using MedicineReminderAPI.Models;
 using MedicineReminderAPI.Service;
 using MedicineReminderAPI;
 using System.Net;
+using Microsoft.AspNetCore.Rewrite;
 
 
 //Инициализирует экземпляр WebApplicationBuilder с предварительно настроенными значениями по умолчанию.
@@ -85,13 +86,12 @@ builder.Services.AddScoped<IFindAuthorizedUser, FindAuthorizedUser>();
 
 /*
 builder.Services.AddHttpsRedirection(options =>
-{
-    options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
-    options.HttpsPort = 5001;
-    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-    options.HttpsPort = 44344;
-});*/
-
+{    
+    //options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+    options.HttpsPort = 443;
+});
+*/
+/*
 if (!builder.Environment.IsDevelopment())
 {
     builder.Services.AddHttpsRedirection(options =>
@@ -100,6 +100,7 @@ if (!builder.Environment.IsDevelopment())
         options.HttpsPort = 443;
     });
 }
+*/
 
 // Веб-приложение, используемое для настройки конвейера HTTP и маршрутов.
 var app = builder.Build();
@@ -124,6 +125,8 @@ if (!app.Environment.IsDevelopment())
 */
 //ПО промежуточного слоя перенаправления HTTPS для перенаправления HTTP-запросов на HTTPS
 //app.UseHttpsRedirection();
+
+app.UseRewriter(new RewriteOptions().AddRedirectToHttps());
 
 //Добавляет промежуточное ПО маршрутизации конечных точек
 app.UseRouting();
