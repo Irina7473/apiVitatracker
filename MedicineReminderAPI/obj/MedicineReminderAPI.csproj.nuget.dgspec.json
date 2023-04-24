@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\2BAD\\VitatrackerB\\MedicineReminderAPI\\MedicineReminderAPI.csproj": {}
+    "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj": {}
   },
   "projects": {
-    "J:\\2BAD\\VitatrackerB\\MedicineReminderAPI\\MedicineReminderAPI.csproj": {
+    "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\2BAD\\VitatrackerB\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
+        "projectUniqueName": "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
         "projectName": "MedicineReminderAPI",
-        "projectPath": "J:\\2BAD\\VitatrackerB\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
+        "projectPath": "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
         "packagesPath": "C:\\Users\\IrinaS\\.nuget\\packages\\",
-        "outputPath": "J:\\2BAD\\VitatrackerB\\MedicineReminderAPI\\obj\\",
+        "outputPath": "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -54,7 +54,7 @@
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -76,7 +76,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

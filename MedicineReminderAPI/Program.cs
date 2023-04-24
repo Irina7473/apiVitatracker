@@ -17,9 +17,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
 
 //Подключение к базе данных  
-string connection = builder.Configuration.GetConnectionString("RemoteConnection");
+string connection = builder.Configuration.GetConnectionString("LocalConnection");
 builder.Services.AddDbContext<AppApiContext>(options => options.UseMySql(connection,
-     new MySqlServerVersion(new Version(8, 0, 31))));
+     new MySqlServerVersion(new Version(10,4,27))));
 
 // Добавление служб приложения
 builder.Services.AddControllers();
