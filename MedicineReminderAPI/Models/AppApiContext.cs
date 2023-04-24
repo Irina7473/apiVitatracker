@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 
 namespace MedicineReminderAPI.Models
-{
-    public class AppApiContext : DbContext
+{    
+    public class AppApiContext : IdentityUserContext<User, int> 
     {
         
         public DbSet<User> Users { get; set; } = null!;
@@ -28,11 +30,67 @@ namespace MedicineReminderAPI.Models
         // Устанавливаю значения по умолчанию
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>(b =>
+            {
+                b.HasMany(e => e.Claims)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(uc => uc.UserId)
+                    .IsRequired();
+
+                b.HasMany(e => e.Logins)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(ul => ul.UserId)
+                    .IsRequired();
+
+                b.HasMany(e => e.Tokens)
+                    .WithOne(e => e.User)
+                    .HasForeignKey(ut => ut.UserId)
+                    .IsRequired();
+
+            });
+
+            modelBuilder.Entity<User>(b =>
+            {
+                b.ToTable("Users");
+                b.Property(u => u.UserName).HasColumnName("Name").HasMaxLength(120);
+                b.Property(u => u.Email).HasMaxLength(64);
+                b.Property(u => u.PasswordHash).HasColumnName("Password").HasMaxLength(120);
+                b.Property(u => u.EmailConfirmed).HasDefaultValue(false);
+                b.Property(u => u.PhoneNumberConfirmed).HasDefaultValue(false);
+                b.Property(u => u.TwoFactorEnabled).HasDefaultValue(false);
+                b.Property(u => u.LockoutEnabled).HasDefaultValue(false);
+                b.Property(u => u.AccessFailedCount).HasDefaultValue(5);
+                b.Property(u => u.NotUsed).HasDefaultValue(false);
+                b.Property(u => u.Created).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+                b.Property(u => u.Updated).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+            });
+
+            modelBuilder.Entity<IdentityUserClaim<int>>(b =>
+            {
+                b.ToTable("UserClaims");
+            });
+
+            modelBuilder.Entity<IdentityUserLogin<int>>(b =>
+            {
+                b.ToTable("UserLogins");
+            });
+
+            modelBuilder.Entity<IdentityUserToken<int>>(b =>
+            {
+                b.ToTable("UserTokens");
+            });
+
+            
+
+
             //установка значений по умолчанию
+            /*
             modelBuilder.Entity<User>().Property(u => u.NotUsed).HasDefaultValue(false);
             modelBuilder.Entity<User>().Property(u => u.Created).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
             modelBuilder.Entity<User>().Property(u => u.Updated).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
-
+            */
 
             modelBuilder.Entity<NotificationSetting>().Property(u => u.IsEnabled).HasDefaultValue(true);
             modelBuilder.Entity<NotificationSetting>().Property(u => u.IsFloat).HasDefaultValue(false);
@@ -57,28 +115,7 @@ namespace MedicineReminderAPI.Models
 
             modelBuilder.Entity<HistoryRemedy>().Property(u => u.Created).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
 
-            // заполнение таблиц данными
-            /* 
-             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Name = "Bob", Email = "bob@mail.ru", Password = BCrypt.Net.BCrypt.HashPassword("12345678"), NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now },
-                new User { Id = 2, Name = "Eva", Email = "Eva@mail.ru", Password = BCrypt.Net.BCrypt.HashPassword("12345678"), NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now }
-            );
-
-             modelBuilder.Entity<NotificationSetting>().HasData(
-                new NotificationSetting { Id = 1, UserId = 1 },
-                new NotificationSetting { Id = 2, UserId = 2 }
-            );
-
-             modelBuilder.Entity<Remedy>().HasData(
-                 new Remedy { Id = 1, UserId = 1, Name = "витамин", Type = 1, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Courses = {} },
-                 new Remedy { Id = 2, UserId = 2, Name = "аспирин", Type = 1, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Courses = {} }
-              );
-
-             modelBuilder.Entity<Course>().HasData(
-                 new Course { Id = 1, RemedyId = 1, Regime = 1, StartDate = 123, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Usages = {} },
-                 new Course { Id = 2, RemedyId = 2, Regime = 1, StartDate = 123, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Usages = {} }
-             );
-             */
+            
         }
 
 

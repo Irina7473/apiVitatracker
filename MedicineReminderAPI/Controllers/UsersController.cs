@@ -77,7 +77,7 @@ namespace MedicineReminderAPI.Controllerss
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null || user.Id != id) return NotFound();
 
-            if (name != "-1") user.Name = name;
+            if (name != "-1") user.UserName = name;
             if (avatar != "-1") user.Avatar = avatar;
             _context.Entry(user).State = EntityState.Modified;
 
@@ -115,3 +115,13 @@ namespace MedicineReminderAPI.Controllerss
 
     }
 }
+
+
+/*
+ {
+  "id": 0,
+  "userName": "sam",
+  "email": "sam@mail.ru",
+  "passwordHash": "123456"
+}
+*/

@@ -11,6 +11,7 @@ using System.Security.Principal;
 using System.Text;
 using MedicineReminderAPI.Models;
 using BC = BCrypt.Net.BCrypt;
+using Microsoft.AspNetCore.Identity;
 
 namespace UMRapi.Controllers
 {
@@ -20,12 +21,12 @@ namespace UMRapi.Controllers
     public class AuthenticateController : ControllerBase
     {
         private readonly AppApiContext _context;
-        //private readonly ILogger<AuthenticateController> _logger;
-
-        public AuthenticateController(AppApiContext context)
+        UserManager<IdentityUser> _userManager;
+        
+        public AuthenticateController(AppApiContext context, UserManager<IdentityUser> manager)
         {
             _context = context;
-           // _logger.LogInformation($"{DateTime.Now.ToLongTimeString()} Hello AuthenticateController");
+            _userManager = manager;            
         }
 
         // POST: api/login
@@ -36,7 +37,7 @@ namespace UMRapi.Controllers
                        
             var user = _context.Users.FirstOrDefault(u => u.Email == email );
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password) || user.NotUsed == true )
+            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash) || user.NotUsed == true )
             {
                 return BadRequest(new { errorText = "Invalid username or password" });
             }
