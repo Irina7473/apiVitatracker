@@ -83,14 +83,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 builder.Services.AddScoped<IFindAuthorizedUser, FindAuthorizedUser>();
 
-/*
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
-    options.HttpsPort = 5001;
-    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-    options.HttpsPort = 44344;
-});*/
+builder.Services.AddCors();
 
 if (!builder.Environment.IsDevelopment())
 {
@@ -115,13 +108,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }*/
-/*
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
-}
-*/
+
+app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
 //ПО промежуточного слоя перенаправления HTTPS для перенаправления HTTP-запросов на HTTPS
 //app.UseHttpsRedirection();
 

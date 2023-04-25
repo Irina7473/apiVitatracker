@@ -57,28 +57,7 @@ namespace MedicineReminderAPI.Models
 
             modelBuilder.Entity<HistoryRemedy>().Property(u => u.Created).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
 
-            // заполнение таблиц данными
-            /* 
-             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Name = "Bob", Email = "bob@mail.ru", Password = BCrypt.Net.BCrypt.HashPassword("12345678"), NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now },
-                new User { Id = 2, Name = "Eva", Email = "Eva@mail.ru", Password = BCrypt.Net.BCrypt.HashPassword("12345678"), NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now }
-            );
-
-             modelBuilder.Entity<NotificationSetting>().HasData(
-                new NotificationSetting { Id = 1, UserId = 1 },
-                new NotificationSetting { Id = 2, UserId = 2 }
-            );
-
-             modelBuilder.Entity<Remedy>().HasData(
-                 new Remedy { Id = 1, UserId = 1, Name = "витамин", Type = 1, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Courses = {} },
-                 new Remedy { Id = 2, UserId = 2, Name = "аспирин", Type = 1, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Courses = {} }
-              );
-
-             modelBuilder.Entity<Course>().HasData(
-                 new Course { Id = 1, RemedyId = 1, Regime = 1, StartDate = 123, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Usages = {} },
-                 new Course { Id = 2, RemedyId = 2, Regime = 1, StartDate = 123, NotUsed = false, Created = DateTime.Now, Updated = DateTime.Now, Usages = {} }
-             );
-             */
+           
         }
 
 
