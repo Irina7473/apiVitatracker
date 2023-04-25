@@ -29,6 +29,7 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
 // Добавление служб приложения
 builder.Services.AddControllers();
 
+builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 
 //генератор Swagger, который создает SwaggerDocumentобъекты непосредственно из контроллеров и моделей.
@@ -104,6 +105,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }*/
 
+app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 //ПО промежуточного слоя перенаправления HTTPS для перенаправления HTTP-запросов на HTTPS
 //app.UseHttpsRedirection();
 
