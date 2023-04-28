@@ -243,3 +243,20 @@ SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotU
 FROM `Users` AS `u`
 WHERE `u`.`Email` = @__auth_Email_0
 LIMIT 1
+Time:27.04.2023 18:59:01 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: G:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (291ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (210ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1

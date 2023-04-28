@@ -1,4 +1,4 @@
-﻿namespace MedicineReminderAPI
+﻿namespace MedicineReminderAPI.Service
 {
     public class FileLogger : ILogger, IDisposable
     {

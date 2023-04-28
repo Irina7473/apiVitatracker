@@ -6,7 +6,6 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using MedicineReminderAPI.Models;
 using MedicineReminderAPI.Service;
-using MedicineReminderAPI;
 using System.Net;
 
 
@@ -109,13 +108,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }*/
 
+// Для запросов от web с другого адреса
 app.UseCors(x => x
         .AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader());
 
 //ПО промежуточного слоя перенаправления HTTPS для перенаправления HTTP-запросов на HTTPS
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 //Добавляет промежуточное ПО маршрутизации конечных точек
 app.UseRouting();
@@ -131,13 +131,3 @@ app.MapControllers();
 
 app.Run();
 
-
-
-public class AuthOptions
-{
-    public const string ISSUER = "UMRServer"; // издатель токена
-    public const string AUDIENCE = "UMRClient"; // потребитель токена
-    const string KEY = "mysupersecret_secretkey!123";   // ключ для шифрации
-    public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
-        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
-}

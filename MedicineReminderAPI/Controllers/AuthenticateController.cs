@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using MedicineReminderAPI.Models;
+using MedicineReminderAPI.Service;
 using BC = BCrypt.Net.BCrypt;
 
 namespace UMRapi.Controllers
@@ -37,26 +38,10 @@ namespace UMRapi.Controllers
             if (user == null || !BCrypt.Net.BCrypt.Verify(auth.Password, user.Password) || user.NotUsed == true )
             {
                 return BadRequest(new { errorText = "Invalid username or password" });
-            }
-             
-            //создаю объекты Claim для авторизации
-            var claims = new List<Claim> { 
-                new Claim(ClaimTypes.Email, auth.Email),
-                new Claim(ClaimTypes.Actor, user.Id.ToString())
-            };
-            var claimsIdentity = new ClaimsIdentity(claims, "Bearer");
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);           
+            }                        
 
-            // сделать Refresh Token
-            // создаю JWT-токен - вынести отдельно
-            var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
-                    claims: claims,
-                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(1440)),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+            var token = new MyToken().GenerateToken(user);
 
-            var token = new JwtSecurityTokenHandler().WriteToken(jwt);
             return Content(token);
         }
       
