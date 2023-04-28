@@ -11,7 +11,6 @@ namespace MedicineReminderAPI.Models
         public bool IsFloat { get; set; } = false;
         public bool MedicalControl { get; set; } = false;
         public bool NextCourseStart { get; set; } = true;
-
         
     }
 }

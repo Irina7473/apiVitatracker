@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedicineReminderAPI.Models
 {
+
+    // Пока не используем
     public class HistoryRemedy
     {
         public int Id { get; set; }

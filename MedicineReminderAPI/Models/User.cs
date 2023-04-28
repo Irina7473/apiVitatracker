@@ -2,20 +2,24 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
+using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicineReminderAPI.Models
 {
+    //[Microsoft.EntityFrameworkCore.Index(nameof(Email), IsUnique = true)]
     public class User
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Не указано имя")]
+        //[Required(ErrorMessage = "Не указано имя")]
         [StringLength(120, MinimumLength = 1, ErrorMessage = "Длина имени должна быть не менее 1 символа")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required(ErrorMessage = "Не указан электронный адрес")]
         [StringLength(64, MinimumLength = 6)]
-        [RegularExpression(@"[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]{2,4}", ErrorMessage = "Некорректный адрес")]
+        [RegularExpression(@"[A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z]{2,4}", ErrorMessage = "Некорректный адрес")]        
         public string Email { get; set; }
 
 
@@ -45,5 +49,10 @@ namespace MedicineReminderAPI.Models
         public DateTime Updated { get; }
 
         public List<Remedy>? Remedies { get; set; }
+
+        public List<Remedy> FindRemedies (AppApiContext context)
+        {
+            return context.Remedys.Where(r => r.UserId == this.Id && r.NotUsed == false).ToList();
+        }
     }
 }
