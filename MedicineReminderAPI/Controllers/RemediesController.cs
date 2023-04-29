@@ -56,7 +56,8 @@ namespace MedicineReminderAPI.Controllers
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null) return BadRequest(new { errorText = "Login" });
             var remedys = await _context.Remedys.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
-                                    
+            //var remedys = user.FindRemedies(_context);
+
             return remedys;
         }
 

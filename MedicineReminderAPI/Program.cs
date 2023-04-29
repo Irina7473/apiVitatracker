@@ -16,9 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
 
 //Подключение к базе данных  
-string connection = builder.Configuration.GetConnectionString("LocalConnection");
+string connection = builder.Configuration.GetConnectionString("RemoteConnection");
 builder.Services.AddDbContext<AppApiContext>(options => options.UseMySql(connection,
-     new MySqlServerVersion(new Version(10,4,27))));
+     new MySqlServerVersion(new Version(8,0,31))));
 
 // Добавление служб приложения
 builder.Services.AddControllers();
@@ -109,7 +109,7 @@ app.UseCors(x => x
         .AllowAnyHeader());
 
 //ПО промежуточного слоя перенаправления HTTPS для перенаправления HTTP-запросов на HTTPS
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 //Добавляет промежуточное ПО маршрутизации конечных точек
 app.UseRouting();

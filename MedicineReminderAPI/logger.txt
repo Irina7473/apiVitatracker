@@ -811,3 +811,153 @@ Executed DbCommand (0ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType
 SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
 FROM `Remedys` AS `r`
 WHERE (`r`.`UserId` = @__Id_0) AND NOT (`r`.`NotUsed`)
+Time:28.04.2023 15:24:50 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+Failed to determine the https port for redirect.
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (58ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (1ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (26ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__Id_0) AND NOT (`r`.`NotUsed`)
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (833ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='db_a97535_irina74' AND TABLE_NAME='__EFMigrationsHistory';
+Executed DbCommand (236ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (790ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='db_a97535_irina74' AND TABLE_NAME='__EFMigrationsHistory';
+Executed DbCommand (214ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT `MigrationId`, `ProductVersion`
+FROM `__EFMigrationsHistory`
+ORDER BY `MigrationId`;
+Applying migration '20230428094502_init'.
+Executed DbCommand (213ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER DATABASE CHARACTER SET utf8mb4;
+Executed DbCommand (258ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `Users` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Name` varchar(120) CHARACTER SET utf8mb4 NOT NULL,
+    `Email` varchar(64) CHARACTER SET utf8mb4 NOT NULL,
+    `Password` longtext CHARACTER SET utf8mb4 NOT NULL,
+    `Avatar` longtext CHARACTER SET utf8mb4 NULL,
+    `NotUsed` tinyint(1) NOT NULL DEFAULT FALSE,
+    `Created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `Updated` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    CONSTRAINT `PK_Users` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (300ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `NotificationSettings` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `IsEnabled` tinyint(1) NOT NULL DEFAULT TRUE,
+    `IsFloat` tinyint(1) NOT NULL DEFAULT FALSE,
+    `MedicalControl` tinyint(1) NOT NULL DEFAULT FALSE,
+    `NextCourseStart` tinyint(1) NOT NULL DEFAULT TRUE,
+    CONSTRAINT `PK_NotificationSettings` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_NotificationSettings_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (278ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `Remedys` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `UserId` int NOT NULL,
+    `Name` varchar(128) CHARACTER SET utf8mb4 NOT NULL,
+    `Description` longtext CHARACTER SET utf8mb4 NULL,
+    `Comment` longtext CHARACTER SET utf8mb4 NULL,
+    `Type` int NOT NULL,
+    `Icon` int NOT NULL DEFAULT 0,
+    `Color` int NOT NULL DEFAULT 0,
+    `Dose` int NULL,
+    `MeasureUnit` int NULL,
+    `BeforeFood` int NULL,
+    `Photo` longtext CHARACTER SET utf8mb4 NULL,
+    `NotUsed` tinyint(1) NOT NULL DEFAULT FALSE,
+    `Created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `Updated` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    CONSTRAINT `PK_Remedys` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Remedys_Users_UserId` FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (274ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `Courses` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `RemedyId` int NOT NULL,
+    `Comment` longtext CHARACTER SET utf8mb4 NULL,
+    `Regime` int NOT NULL,
+    `StartDate` bigint NOT NULL,
+    `EndDate` bigint NULL,
+    `RemindDate` bigint NULL,
+    `Interval` bigint NULL,
+    `IsFinished` tinyint(1) NOT NULL DEFAULT FALSE,
+    `IsInfinite` tinyint(1) NOT NULL DEFAULT FALSE,
+    `NotUsed` tinyint(1) NOT NULL DEFAULT FALSE,
+    `Created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `Updated` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    CONSTRAINT `PK_Courses` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Courses_Remedys_RemedyId` FOREIGN KEY (`RemedyId`) REFERENCES `Remedys` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (265ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `HistoryRemedys` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `RemedyId` int NOT NULL,
+    `Dose` int NOT NULL,
+    `MeasureUnit` int NOT NULL,
+    `Created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    CONSTRAINT `PK_HistoryRemedys` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_HistoryRemedys_Remedys_RemedyId` FOREIGN KEY (`RemedyId`) REFERENCES `Remedys` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (269ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE `Usages` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `CourseId` int NOT NULL,
+    `UseTime` bigint NOT NULL,
+    `FactUseTime` bigint NULL,
+    `Quantity` int NULL,
+    `NotUsed` tinyint(1) NOT NULL DEFAULT FALSE,
+    `Created` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    `Updated` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+    CONSTRAINT `PK_Usages` PRIMARY KEY (`Id`),
+    CONSTRAINT `FK_Usages_Courses_CourseId` FOREIGN KEY (`CourseId`) REFERENCES `Courses` (`Id`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+Executed DbCommand (278ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX `IX_Courses_RemedyId` ON `Courses` (`RemedyId`);
+Executed DbCommand (229ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX `IX_HistoryRemedys_RemedyId` ON `HistoryRemedys` (`RemedyId`);
+Executed DbCommand (234ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_NotificationSettings_UserId` ON `NotificationSettings` (`UserId`);
+Executed DbCommand (245ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX `IX_Remedys_UserId` ON `Remedys` (`UserId`);
+Executed DbCommand (232ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE INDEX `IX_Usages_CourseId` ON `Usages` (`CourseId`);
+Executed DbCommand (215ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20230428094502_init', '7.0.5');
+Applying migration '20230428094620_init_uniq'.
+Executed DbCommand (239ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE UNIQUE INDEX `IX_Users_Email` ON `Users` (`Email`);
+Executed DbCommand (231ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20230428094620_init_uniq', '7.0.5');
+Applying migration '20230428095106_name'.
+Executed DbCommand (357ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE `Users` MODIFY COLUMN `Name` varchar(120) CHARACTER SET utf8mb4 NULL;
+Executed DbCommand (209ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20230428095106_name', '7.0.5');

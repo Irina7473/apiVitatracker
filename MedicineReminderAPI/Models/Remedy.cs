@@ -44,6 +44,7 @@ namespace MedicineReminderAPI.Models
         public DateTime Updated { get; }
 
         public List<HistoryRemedy>? HistoryRemedys { get; set; }
-        public List<Course>? Courses { get; set; } 
+        public List<Course>? Courses { get; set; }
+                
     }
 }
