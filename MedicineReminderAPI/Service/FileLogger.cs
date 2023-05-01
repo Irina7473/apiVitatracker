@@ -1,4 +1,4 @@
-﻿namespace MedicineReminderAPI
+﻿namespace MedicineReminderAPI.Service
 {
     public class FileLogger : ILogger, IDisposable
     {
@@ -16,8 +16,7 @@
         public void Dispose() { }
 
         public bool IsEnabled(LogLevel logLevel)
-        {
-            //return logLevel == LogLevel.Trace;
+        {            
             return true;
         }
 

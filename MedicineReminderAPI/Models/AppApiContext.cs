@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 
 namespace MedicineReminderAPI.Models
 {
@@ -28,10 +29,14 @@ namespace MedicineReminderAPI.Models
         // Устанавливаю значения по умолчанию
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //установка значений по умолчанию
-            modelBuilder.Entity<User>().Property(u => u.NotUsed).HasDefaultValue(false);
-            modelBuilder.Entity<User>().Property(u => u.Created).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
-            modelBuilder.Entity<User>().Property(u => u.Updated).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+            
+            modelBuilder.Entity<User>(u =>
+            {
+                u.HasIndex(u => u.Email).IsUnique();
+                u.Property(u => u.NotUsed).HasDefaultValue(false);
+                u.Property(u => u.Created).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+                u.Property(u => u.Updated).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+            });
 
 
             modelBuilder.Entity<NotificationSetting>().Property(u => u.IsEnabled).HasDefaultValue(true);

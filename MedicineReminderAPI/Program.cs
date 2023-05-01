@@ -6,7 +6,6 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using MedicineReminderAPI.Models;
 using MedicineReminderAPI.Service;
-using MedicineReminderAPI;
 using System.Net;
 
 
@@ -17,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "logger.txt"));
 
 //Подключение к базе данных  
-string connection = builder.Configuration.GetConnectionString("RelisConnection");
+string connection = builder.Configuration.GetConnectionString("RemoteConnection");
 builder.Services.AddDbContext<AppApiContext>(options => options.UseMySql(connection,
      new MySqlServerVersion(new Version(8,0,31))));
 
@@ -102,13 +101,8 @@ app.Logger.LogInformation($"Time:{DateTime.Now.ToString()} Hello APP");
 //Добавляет промежуточное ПО Swagger UI для изучения веб-API
 app.UseSwagger();
 app.UseSwaggerUI();
-/*
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}*/
 
+// Для запросов от web с другого адреса
 app.UseCors(x => x
         .AllowAnyOrigin()
         .AllowAnyMethod()
@@ -131,13 +125,3 @@ app.MapControllers();
 
 app.Run();
 
-
-
-public class AuthOptions
-{
-    public const string ISSUER = "UMRServer"; // издатель токена
-    public const string AUDIENCE = "UMRClient"; // потребитель токена
-    const string KEY = "mysupersecret_secretkey!123";   // ключ для шифрации
-    public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
-        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
-}

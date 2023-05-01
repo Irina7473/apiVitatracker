@@ -24,13 +24,11 @@ namespace MedicineReminderAPI.Controllerss
     public class UsersController : ControllerBase
     {
         private readonly AppApiContext _context;
-        private readonly IAuthorizationService _authService;
         private readonly IFindAuthorizedUser _autheUser;
 
-        public UsersController(AppApiContext context, IAuthorizationService authService, IFindAuthorizedUser autheUser)
+        public UsersController(AppApiContext context, IFindAuthorizedUser autheUser)
         {
             _context = context;
-            _authService = authService;
             _autheUser = autheUser;
         }
 
@@ -40,10 +38,7 @@ namespace MedicineReminderAPI.Controllerss
         public async Task<ActionResult<User>> PostUser(User user)
         {
             if (_context.Users == null) return Problem("Entity set 'AppApiContext.Users'  is null.");
-
-            // проверка почты на уникальность
-            var existUsers = await _context.Users.FirstOrDefaultAsync(u => u.Email == user.Email);           
-            if (existUsers != null) return BadRequest(new { errorText = "User with this email already exists" });
+           
             //проверка валидации модели на успешность
             if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
 
@@ -62,9 +57,10 @@ namespace MedicineReminderAPI.Controllerss
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null || user.Id != id)
                 return BadRequest(new { errorText = "Login" });
-            user.Remedies = await _context.Remedys.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
-            return user;
 
+            user.Remedies = user.FindRemedies(_context);
+
+            return user;
         }
 
         // сделать изменение пароля с подтверждением на почту

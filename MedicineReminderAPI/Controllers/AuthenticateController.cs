@@ -10,6 +10,7 @@ using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using MedicineReminderAPI.Models;
+using MedicineReminderAPI.Service;
 using BC = BCrypt.Net.BCrypt;
 
 namespace UMRapi.Controllers
@@ -20,45 +21,27 @@ namespace UMRapi.Controllers
     public class AuthenticateController : ControllerBase
     {
         private readonly AppApiContext _context;
-        //private readonly ILogger<AuthenticateController> _logger;
 
         public AuthenticateController(AppApiContext context)
         {
             _context = context;
-           // _logger.LogInformation($"{DateTime.Now.ToLongTimeString()} Hello AuthenticateController");
         }
 
         // POST: api/login
-        [HttpPost("{email}, {password}")]        
-        public IActionResult Token (string email, string password)
+        [HttpPost]        
+        public IActionResult Token (Authenticate auth)
         {
             if (_context.Users == null) return NotFound();
                        
-             var user = _context.Users.FirstOrDefault(u => u.Email == email );
+             var user = _context.Users.FirstOrDefault(u => u.Email == auth.Email );
 
-            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password) || user.NotUsed == true )
+            if (user == null || !BCrypt.Net.BCrypt.Verify(auth.Password, user.Password) || user.NotUsed == true )
             {
                 return BadRequest(new { errorText = "Invalid username or password" });
-            }
-             
-            //создаю объекты Claim для авторизации
-            var claims = new List<Claim> { 
-                new Claim(ClaimTypes.Email, email),
-                new Claim(ClaimTypes.Actor, user.Id.ToString())
-            };
-            var claimsIdentity = new ClaimsIdentity(claims, "Bearer");
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);           
+            }                        
 
-            // сделать Refresh Token
-            // создаю JWT-токен - вынести отдельно
-            var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
-                    claims: claims,
-                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(60)),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+            var token = new MyToken().GenerateToken(user);
 
-            var token = new JwtSecurityTokenHandler().WriteToken(jwt);
             return Content(token);
         }
       
