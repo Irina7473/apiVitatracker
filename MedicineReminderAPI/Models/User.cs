@@ -8,12 +8,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MedicineReminderAPI.Models
 {
-    //[Microsoft.EntityFrameworkCore.Index(nameof(Email), IsUnique = true)]
+    [Microsoft.EntityFrameworkCore.Index(nameof(Email), IsUnique = true)]
     public class User
     {
         public int Id { get; set; }
 
-        //[Required(ErrorMessage = "Не указано имя")]
         [StringLength(120, MinimumLength = 1, ErrorMessage = "Длина имени должна быть не менее 1 символа")]
         public string? Name { get; set; }
 
@@ -25,7 +24,6 @@ namespace MedicineReminderAPI.Models
 
         [Column(TypeName = "varchar(120)")]
         [Required(ErrorMessage = "Не указан пароль")]
-        //[RegularExpression(@"^[A-Za-z0-9]{6,16}$", ErrorMessage = "Некорректный пароль")]
         private string password;
         public string Password
         {
