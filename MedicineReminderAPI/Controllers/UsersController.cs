@@ -100,6 +100,9 @@ namespace MedicineReminderAPI.Controllerss
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
+            //выход из аккаунта
+            //нужно ли помечать notused все для этого user??
+
             return NoContent();
         }
 

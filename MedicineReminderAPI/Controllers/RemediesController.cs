@@ -52,11 +52,12 @@ namespace MedicineReminderAPI.Controllers
         public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedys()
         {
             if (_context.Remedys == null) return NotFound();
-
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null) return BadRequest(new { errorText = "Login" });
-            var remedys = await _context.Remedys.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
-            //var remedys = user.FindRemedies(_context);
+
+            //var remedys = await _context.Remedys.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
+            var remedys = user.FindRemedies(_context);            
+            foreach (Remedy remedy in remedys) FindRemedyWithCoursesAndUsages(remedy);
 
             return remedys;
         }
@@ -67,11 +68,10 @@ namespace MedicineReminderAPI.Controllers
         {
             if (_context.Remedys == null) return NotFound();
 
-            var remedy = await RemedyFindAsync(id);
+            var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
-            remedy.Courses = await _context.Courses.Where(c => c.RemedyId == remedy.Id && c.NotUsed == false).ToListAsync();
             
-            return remedy;
+            return FindRemedyWithCoursesAndUsages(remedy);
         }
 
         // PUT: api/Remedies/5
@@ -80,7 +80,7 @@ namespace MedicineReminderAPI.Controllers
         {
             if (_context.Remedys == null) return NotFound();
 
-            var existRemedy = await RemedyFindAsync(id);
+            var existRemedy = await FindRemedyAsync(id);
             if (existRemedy == null || existRemedy.Id != remedy.Id ) return NotFound();
             //Отсоединение: сущность не отслеживается контекстом
             _context.Entry(existRemedy).State = EntityState.Detached;
@@ -105,7 +105,7 @@ namespace MedicineReminderAPI.Controllers
         {
             if (_context.Remedys == null) return NotFound();
 
-            var remedy = await RemedyFindAsync(id);
+            var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
 
             remedy.NotUsed = true;
@@ -121,12 +121,20 @@ namespace MedicineReminderAPI.Controllers
             return (_context.Remedys?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        private async Task<Remedy?> RemedyFindAsync(int id)
+        private async Task<Remedy?> FindRemedyAsync(int id)
         {
             var remedy = await _context.Remedys.FindAsync(id);
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (remedy == null || remedy.NotUsed == true || user == null || remedy.UserId != user.Id)
                 return null;
+
+            return remedy;
+        }
+
+        private Remedy FindRemedyWithCoursesAndUsages(Remedy remedy)
+        {
+            remedy.Courses = remedy.FindCourses(_context);
+            foreach (Course course in remedy.Courses) course.Usages = course.FindUsages(_context);
             return remedy;
         }
     }

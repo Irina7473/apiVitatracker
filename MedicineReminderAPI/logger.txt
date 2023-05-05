@@ -961,3 +961,946 @@ ALTER TABLE `Users` MODIFY COLUMN `Name` varchar(120) CHARACTER SET utf8mb4 NULL
 Executed DbCommand (209ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
 INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
 VALUES ('20230428095106_name', '7.0.5');
+Time:02.05.2023 9:40:29 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (269ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (198ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (211ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (197ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (Size = 128), @p6='?' (Size = 4000), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Remedys` (`BeforeFood`, `Comment`, `Description`, `Dose`, `MeasureUnit`, `Name`, `Photo`, `Type`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+SELECT `Id`, `Color`, `Created`, `Icon`, `NotUsed`, `Updated`
+FROM `Remedys`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (197ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (198ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__user_Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (199ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 128), @p9='?' (DbType = Boolean), @p10='?' (Size = 4000), @p11='?' (DbType = Int32), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Remedys` SET `BeforeFood` = @p0, `Color` = @p1, `Comment` = @p2, `Created` = @p3, `Description` = @p4, `Dose` = @p5, `Icon` = @p6, `MeasureUnit` = @p7, `Name` = @p8, `NotUsed` = @p9, `Photo` = @p10, `Type` = @p11, `Updated` = @p12, `UserId` = @p13
+WHERE `Id` = @p14;
+SELECT ROW_COUNT();
+Time:05.05.2023 9:02:12 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (274ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (227ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__user_Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (207ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (316ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (306ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Time:05.05.2023 11:30:29 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (235ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (198ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (207ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (201ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (201ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (199ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (199ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (199ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (215ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (207ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (207ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (206ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (207ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (206ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (206ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (516ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 128), @p9='?' (DbType = Boolean), @p10='?' (Size = 4000), @p11='?' (DbType = Int32), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Remedys` SET `BeforeFood` = @p0, `Color` = @p1, `Comment` = @p2, `Created` = @p3, `Description` = @p4, `Dose` = @p5, `Icon` = @p6, `MeasureUnit` = @p7, `Name` = @p8, `NotUsed` = @p9, `Photo` = @p10, `Type` = @p11, `Updated` = @p12, `UserId` = @p13
+WHERE `Id` = @p14;
+SELECT ROW_COUNT();
+Executed DbCommand (202ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@p14='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime), @p4='?' (Size = 4000), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (Size = 128), @p9='?' (DbType = Boolean), @p10='?' (Size = 4000), @p11='?' (DbType = Int32), @p12='?' (DbType = DateTime), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Remedys` SET `BeforeFood` = @p0, `Color` = @p1, `Comment` = @p2, `Created` = @p3, `Description` = @p4, `Dose` = @p5, `Icon` = @p6, `MeasureUnit` = @p7, `Name` = @p8, `NotUsed` = @p9, `Photo` = @p10, `Type` = @p11, `Updated` = @p12, `UserId` = @p13
+WHERE `Id` = @p14;
+SELECT ROW_COUNT();
+Time:05.05.2023 11:40:57 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (243ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (205ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (222ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__user_Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (205ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (203ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (203ms) [Parameters=[@__c_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__c_Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__c_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__c_Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (203ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Time:05.05.2023 11:51:34 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (239ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (207ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int64), @p2='?' (DbType = Int32), @p3='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Time:05.05.2023 11:54:49 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (231ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (218ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 64), @p3='?' (Size = 120), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `Avatar` = @p0, `Created` = @p1, `Email` = @p2, `Name` = @p3, `NotUsed` = @p4, `Password` = @p5, `Updated` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Time:05.05.2023 12:00:40 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (258ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (211ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Time:05.05.2023 12:54:25 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (237ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (212ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (DbType = DateTime), @p2='?' (Size = 64), @p3='?' (Size = 120), @p4='?' (DbType = Boolean), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Users` SET `Avatar` = @p0, `Created` = @p1, `Email` = @p2, `Name` = @p3, `NotUsed` = @p4, `Password` = @p5, `Updated` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Executed DbCommand (202ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int64), @p2='?' (DbType = Int32), @p3='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (200ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Failed executing DbCommand (204ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+An exception occurred in the database while saving changes for context type 'MedicineReminderAPI.Models.AppApiContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> MySqlConnector.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails
+   at MySqlConnector.Core.ServerSession.ReceiveReplyAsyncAwaited(ValueTask`1 task) in /_/src/MySqlConnector/Core/ServerSession.cs:line 964
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in /_/src/MySqlConnector/Core/ResultSet.cs:line 175
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 130
+   at MySqlConnector.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 493
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 77
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 345
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 337
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+An unhandled exception has occurred while executing the request.
+Executed DbCommand (199ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Time:05.05.2023 13:03:14 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (237ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (205ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Executed DbCommand (200ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (199ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int64), @p2='?' (DbType = Int32), @p3='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (206ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (206ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Executed DbCommand (204ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Time:05.05.2023 13:16:47 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (238ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (213ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (216ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (213ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int64), @p2='?' (DbType = Int32), @p3='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (200ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE `u`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__usage_CourseId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__usage_CourseId_0
+LIMIT 1
+Executed DbCommand (200ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = DateTime), @p6='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+SET AUTOCOMMIT = 1;
+UPDATE `Usages` SET `CourseId` = @p0, `Created` = @p1, `FactUseTime` = @p2, `NotUsed` = @p3, `Quantity` = @p4, `Updated` = @p5, `UseTime` = @p6
+WHERE `Id` = @p7;
+SELECT ROW_COUNT();
+Time:05.05.2023 13:34:35 Hello APP
+Now listening on: https://localhost:7102
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (254ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (219ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__user_Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (204ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (204ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE `c`.`Id` = @__p_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__course_RemedyId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE `r`.`Id` = @__course_RemedyId_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__user_Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__r_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__r_Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__c_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__c_Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (202ms) [Parameters=[@__c_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__c_Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (201ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (201ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedys` AS `r`
+WHERE (`r`.`UserId` = @__Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (201ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (201ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (200ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
+Executed DbCommand (200ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`CourseId`, `u`.`Created`, `u`.`FactUseTime`, `u`.`NotUsed`, `u`.`Quantity`, `u`.`Updated`, `u`.`UseTime`
+FROM `Usages` AS `u`
+WHERE (`u`.`CourseId` = @__Id_0) AND NOT (`u`.`NotUsed`)
+Executed DbCommand (200ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `c`.`Id`, `c`.`Comment`, `c`.`Created`, `c`.`EndDate`, `c`.`Interval`, `c`.`IsFinished`, `c`.`IsInfinite`, `c`.`NotUsed`, `c`.`Regime`, `c`.`RemedyId`, `c`.`RemindDate`, `c`.`StartDate`, `c`.`Updated`
+FROM `Courses` AS `c`
+WHERE (`c`.`RemedyId` = @__Id_0) AND NOT (`c`.`NotUsed`)
