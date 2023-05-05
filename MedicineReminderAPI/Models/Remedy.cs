@@ -41,10 +41,15 @@ namespace MedicineReminderAPI.Models
 
         //время создания и время изменения
         public DateTime Created { get; }
-        public DateTime Updated { get; }
+        public DateTime Updated { get; set; }
 
         public List<HistoryRemedy>? HistoryRemedys { get; set; }
         public List<Course>? Courses { get; set; }
-                
+
+        public List<Course> FindCourses(AppApiContext context)
+        {
+            return context.Courses.Where(c => c.RemedyId == this.Id && c.NotUsed == false).ToList();
+        }
+
     }
 }

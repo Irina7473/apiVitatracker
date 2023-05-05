@@ -60,6 +60,7 @@ namespace MedicineReminderAPI.Controllers
             List<Course> courses = new();
             foreach (Remedy r in user.Remedies)
                 courses.AddRange (await _context.Courses.Where(c => c.RemedyId == r.Id && c.NotUsed == false).ToListAsync());
+            foreach (var course in courses) FindCoursesWithUsages(course);
 
             return courses;
         }
@@ -70,12 +71,10 @@ namespace MedicineReminderAPI.Controllers
         {
             if (_context.Courses == null) return NotFound();
 
-            var course = await CourseFindAsync(id);
+            var course = await FindCourseAsync(id);
             if (course == null) return NotFound();
 
-            course.Usages = await _context.Usages.Where(u => u.CourseId == course.Id && u.NotUsed == false).ToListAsync();
-
-            return course;
+            return FindCoursesWithUsages(course);
         }
 
         // PUT: api/Courses/5
@@ -84,7 +83,7 @@ namespace MedicineReminderAPI.Controllers
         {            
             if (_context.Courses == null) return NotFound();
 
-            var existCourse = await CourseFindAsync(id);
+            var existCourse = await FindCourseAsync(id);
             if (existCourse == null || existCourse.Id != course.Id) return NotFound();
             //Отсоединение: сущность не отслеживается контекстом
             _context.Entry(existCourse).State = EntityState.Detached;
@@ -109,7 +108,7 @@ namespace MedicineReminderAPI.Controllers
         {
             if (_context.Courses == null) return NotFound();
 
-            var course = await CourseFindAsync(id);
+            var course = await FindCourseAsync(id);
             if (course == null) return NotFound();           
 
             course.NotUsed = true;
@@ -125,7 +124,7 @@ namespace MedicineReminderAPI.Controllers
             return (_context.Courses?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        private async Task<Course?> CourseFindAsync(int id)
+        private async Task<Course?> FindCourseAsync(int id)
         {            
             var course = await _context.Courses.FindAsync(id);
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
@@ -135,6 +134,12 @@ namespace MedicineReminderAPI.Controllers
 
             return course;
         }
-        
+
+        private Course FindCoursesWithUsages(Course course)
+        {
+            course.Usages = course.FindUsages(_context);
+            return course;
+        }
+
     }
 }

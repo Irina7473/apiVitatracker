@@ -33,7 +33,7 @@ namespace UMRapi.Controllers
         {
             if (_context.Users == null) return NotFound();
                        
-             var user = _context.Users.FirstOrDefault(u => u.Email == auth.Email );
+            var user = _context.Users.FirstOrDefault(u => u.Email == auth.Email );
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(auth.Password, user.Password) || user.NotUsed == true )
             {

@@ -44,7 +44,7 @@ namespace MedicineReminderAPI.Models
 
         //время создания и время изменения
         public DateTime Created { get; }
-        public DateTime Updated { get; }
+        public DateTime Updated { get; set; }        
 
         public List<Remedy>? Remedies { get; set; }
 
