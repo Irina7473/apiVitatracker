@@ -10,10 +10,10 @@ namespace MedicineReminderAPI.Models
         
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<NotificationSetting> NotificationSettings { get; set; } = null!;
-        public DbSet<Remedy> Remedys { get; set; } = null!;
+        public DbSet<Remedy> Remedies { get; set; } = null!;
         public DbSet<Course> Courses { get; set; } = null!;
         public DbSet<Usage> Usages { get; set; } = null!;
-        public DbSet<HistoryRemedy> HistoryRemedys { get; set; } = null!;
+        public DbSet<HistoryRemedy> HistoryRemedies { get; set; } = null!;
 
 
         public AppApiContext(DbContextOptions<AppApiContext> options) : base(options)       

@@ -50,7 +50,7 @@ namespace MedicineReminderAPI.Models
 
         public List<Remedy> FindRemedies (AppApiContext context)
         {
-            return context.Remedys.Where(r => r.UserId == this.Id && r.NotUsed == false).ToList();
+            return context.Remedies.Where(r => r.UserId == this.Id && r.NotUsed == false).ToList();
         }
     }
 }

@@ -34,7 +34,7 @@ namespace MedicineReminderAPI.Controllers
 
             // проверка авторизации
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            var remedy = _context.Remedys.Where(c => c.Id == course.RemedyId).FirstOrDefault();
+            var remedy = _context.Remedies.Where(c => c.Id == course.RemedyId).FirstOrDefault();
             if (user == null || remedy == null || remedy.NotUsed == true || remedy.UserId != user.Id) 
                     return BadRequest(new { errorText = "Incorrect data" });
 
@@ -56,7 +56,7 @@ namespace MedicineReminderAPI.Controllers
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null) return BadRequest(new { errorText = "Login" });
 
-            user.Remedies = await _context.Remedys.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
+            user.Remedies = await _context.Remedies.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
             List<Course> courses = new();
             foreach (Remedy r in user.Remedies)
                 courses.AddRange (await _context.Courses.Where(c => c.RemedyId == r.Id && c.NotUsed == false).ToListAsync());
@@ -129,7 +129,7 @@ namespace MedicineReminderAPI.Controllers
             var course = await _context.Courses.FindAsync(id);
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null || course == null || course.NotUsed == true) return null;
-            var remedy = _context.Remedys.Where(c => c.Id == course.RemedyId).FirstOrDefault();
+            var remedy = _context.Remedies.Where(c => c.Id == course.RemedyId).FirstOrDefault();
             if (remedy == null || remedy.UserId != user.Id) return null;
 
             return course;

@@ -13,7 +13,7 @@ namespace MedicineReminderAPI.Service
     {     
         public User? AuthorizedUser(HttpContext authService, AppApiContext context)
         {                 
-            var claim = authService.User.FindFirst(ClaimTypes.Actor);
+            var claim = authService.User.FindFirst("id");
             if (claim == null) return null;
             User user = context.Users.Where(u => u.Id.ToString() == claim.Value).First<User>();
             if (user == null || user.NotUsed == true) return null;

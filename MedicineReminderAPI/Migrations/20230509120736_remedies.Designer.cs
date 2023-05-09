@@ -3,6 +3,7 @@ using System;
 using MedicineReminderAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicineReminderAPI.Migrations
 {
     [DbContext(typeof(AppApiContext))]
-    partial class AppApiContextModelSnapshot : ModelSnapshot
+    [Migration("20230509120736_remedies")]
+    partial class remedies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

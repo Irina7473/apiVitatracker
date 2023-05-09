@@ -33,7 +33,7 @@ namespace MedicineReminderAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Remedy>> PostRemedy(Remedy remedy)
         {
-            if (_context.Remedys == null) return Problem("Entity set 'AppApiContext.Remedys'  is null.");
+            if (_context.Remedies == null) return Problem("Entity set 'AppApiContext.Remedies'  is null.");
             // проверка авторизации
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null || remedy.UserId != user.Id) return BadRequest(new { errorText = "Incorrect data" });
@@ -41,7 +41,7 @@ namespace MedicineReminderAPI.Controllers
             //проверка валидации модели на успешность
             if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
             
-            _context.Remedys.Add(remedy);
+            _context.Remedies.Add(remedy);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRemedy", new { id = remedy.Id }, remedy);
@@ -49,9 +49,9 @@ namespace MedicineReminderAPI.Controllers
 
         // GET: api/Remedies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedys()
+        public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedies()
         {
-            if (_context.Remedys == null) return NotFound();
+            if (_context.Remedies == null) return NotFound();
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null) return BadRequest(new { errorText = "Login" });
 
@@ -66,7 +66,7 @@ namespace MedicineReminderAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Remedy>> GetRemedy(int id)
         {
-            if (_context.Remedys == null) return NotFound();
+            if (_context.Remedies == null) return NotFound();
 
             var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
@@ -78,7 +78,7 @@ namespace MedicineReminderAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRemedy(int id, Remedy remedy)
         {
-            if (_context.Remedys == null) return NotFound();
+            if (_context.Remedies == null) return NotFound();
 
             var existRemedy = await FindRemedyAsync(id);
             if (existRemedy == null || existRemedy.Id != remedy.Id ) return NotFound();
@@ -103,7 +103,7 @@ namespace MedicineReminderAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRemedy(int id)
         {
-            if (_context.Remedys == null) return NotFound();
+            if (_context.Remedies == null) return NotFound();
 
             var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
@@ -118,12 +118,12 @@ namespace MedicineReminderAPI.Controllers
         
         private bool RemedyExists(int id)
         {
-            return (_context.Remedys?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Remedies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
         private async Task<Remedy?> FindRemedyAsync(int id)
         {
-            var remedy = await _context.Remedys.FindAsync(id);
+            var remedy = await _context.Remedies.FindAsync(id);
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (remedy == null || remedy.NotUsed == true || user == null || remedy.UserId != user.Id)
                 return null;

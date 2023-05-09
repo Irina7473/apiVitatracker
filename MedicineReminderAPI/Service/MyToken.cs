@@ -13,7 +13,7 @@ namespace MedicineReminderAPI.Service
             //создаю объекты Claim для авторизации
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Actor, user.Id.ToString())
+                new Claim("id", user.Id.ToString())
             };
             var claimsIdentity = new ClaimsIdentity(claims, "Bearer");
             var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
