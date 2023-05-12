@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MedicineReminderAPI.Models;
 using MedicineReminderAPI.Service;
+using MedicineReminderAPI.Migrations;
 
 namespace MedicineReminderAPI.Controllers
 {
@@ -47,9 +48,9 @@ namespace MedicineReminderAPI.Controllers
             return CreatedAtAction("GetCourse", new { id = course.Id }, course);
         }
 
-        // GET: api/Courses
+        // GET: api/Courses/strategy?= "add"
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Course>>> GetCourses()
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourses(string strategy = "nude")
         {
            if (_context.Courses == null) return NotFound();
 
@@ -60,21 +61,24 @@ namespace MedicineReminderAPI.Controllers
             List<Course> courses = new();
             foreach (Remedy r in user.Remedies)
                 courses.AddRange (await _context.Courses.Where(c => c.RemedyId == r.Id && c.NotUsed == false).ToListAsync());
-            foreach (var course in courses) FindCoursesWithUsages(course);
+            if (courses == null || courses.Count == 0) return NotFound();
 
+            if (strategy != "nude")
+                foreach (var course in courses) course.Usages = course.FindUsages(_context);
             return courses;
         }
 
-        // GET: api/Courses/5
+        // GET: api/Courses/5 strategy?= "nude"
         [HttpGet("{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id)
+        public async Task<ActionResult<Course>> GetCourse(int id, string strategy = "add")
         {
             if (_context.Courses == null) return NotFound();
 
             var course = await FindCourseAsync(id);
             if (course == null) return NotFound();
+            if (strategy == "add") course.Usages = course.FindUsages(_context);
 
-            return FindCoursesWithUsages(course);
+            return course;
         }
 
         // PUT: api/Courses/5
@@ -109,11 +113,14 @@ namespace MedicineReminderAPI.Controllers
             if (_context.Courses == null) return NotFound();
 
             var course = await FindCourseAsync(id);
-            if (course == null) return NotFound();           
+            if (course == null) return NotFound();
 
+            course.Usages = course.FindUsages(_context);
+            foreach (var usage in course.Usages) usage.NotUsed = true;
             course.NotUsed = true;
 
             _context.Entry(course).State = EntityState.Modified;
+            //_context.Entry(course.Usages).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();                     
@@ -134,12 +141,12 @@ namespace MedicineReminderAPI.Controllers
 
             return course;
         }
-
+        /*
         private Course FindCoursesWithUsages(Course course)
         {
             course.Usages = course.FindUsages(_context);
             return course;
-        }
+        }*/
 
     }
 }

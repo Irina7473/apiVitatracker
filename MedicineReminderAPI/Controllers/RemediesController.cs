@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using MedicineReminderAPI.Models;
 using MedicineReminderAPI.Service;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using MedicineReminderAPI.Migrations;
 
 namespace MedicineReminderAPI.Controllers
 {
@@ -46,32 +47,36 @@ namespace MedicineReminderAPI.Controllers
 
             return CreatedAtAction("GetRemedy", new { id = remedy.Id }, remedy);
         }
-
-        // GET: api/Remedies
+        
+        // GET: api/Remedies/strategy?= "add"
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedies()
-        {
+        public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedies(string strategy = "nude")
+        {      
             if (_context.Remedies == null) return NotFound();
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
             if (user == null) return BadRequest(new { errorText = "Login" });
+            var remedies = user.FindRemedies(_context);
+            
+            if (remedies == null || remedies.Count == 0) return NotFound();
+            if (strategy!= "nude") 
+                foreach (var remedy in remedies) 
+                    FindRemedyWithCoursesAndUsages(remedy);
 
-            //var remedys = await _context.Remedys.Where(r => r.UserId == user.Id && r.NotUsed == false).ToListAsync();
-            var remedys = user.FindRemedies(_context);            
-            foreach (Remedy remedy in remedys) FindRemedyWithCoursesAndUsages(remedy);
-
-            return remedys;
+            return remedies;
         }
 
-        // GET: api/Remedies/5
+        // GET: api/Remedies/5 strategy?= "nude"
         [HttpGet("{id}")]
-        public async Task<ActionResult<Remedy>> GetRemedy(int id)
+        public async Task<ActionResult<Remedy>> GetRemedy(int id, string strategy = "add")
         {
             if (_context.Remedies == null) return NotFound();
 
             var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
-            
-            return FindRemedyWithCoursesAndUsages(remedy);
+            if (strategy == "add")
+                remedy = FindRemedyWithCoursesAndUsages(remedy);
+
+            return remedy;
         }
 
         // PUT: api/Remedies/5
@@ -107,7 +112,16 @@ namespace MedicineReminderAPI.Controllers
 
             var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
+            remedy = FindRemedyWithCoursesAndUsages(remedy);
 
+            if (remedy.Courses != null)
+                foreach (var course in remedy.Courses)
+                {
+                    if (course.Usages != null)
+                        foreach (var usage in course.Usages)
+                            usage.NotUsed = true;
+                    course.NotUsed = true;
+                }             
             remedy.NotUsed = true;
 
             _context.Entry(remedy).State = EntityState.Modified;
@@ -120,6 +134,17 @@ namespace MedicineReminderAPI.Controllers
         {
             return (_context.Remedies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        /*
+        private async Task<List<Remedy>?> FindRemediesAsync()
+        {
+            if (_context.Remedies == null) return null;
+            var user = _autheUser.AuthorizedUser(HttpContext, _context);
+            if (user == null) return null;
+            var remedies = user.FindRemedies(_context);
+            return remedies;
+        }
+        */
 
         private async Task<Remedy?> FindRemedyAsync(int id)
         {

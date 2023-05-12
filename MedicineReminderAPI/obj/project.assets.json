@@ -4361,31 +4361,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IrinaS\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Irina\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
+      "projectUniqueName": "G:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
       "projectName": "MedicineReminderAPI",
-      "projectPath": "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
-      "packagesPath": "C:\\Users\\IrinaS\\.nuget\\packages\\",
-      "outputPath": "J:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\obj\\",
+      "projectPath": "G:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
+      "packagesPath": "C:\\Users\\Irina\\.nuget\\packages\\",
+      "outputPath": "G:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\IrinaS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Irina\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

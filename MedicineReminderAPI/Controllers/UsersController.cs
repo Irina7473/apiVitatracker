@@ -38,7 +38,10 @@ namespace MedicineReminderAPI.Controllerss
         public async Task<ActionResult<User>> PostUser(User user)
         {
             if (_context.Users == null) return Problem("Entity set 'AppApiContext.Users'  is null.");
-           
+            //проверка email
+            if ((_context.Users?.Any(u => u.Email == user.Email)).GetValueOrDefault())
+                return BadRequest(new { errorText = "User exists" });
+
             //проверка валидации модели на успешность
             if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
 
@@ -48,30 +51,32 @@ namespace MedicineReminderAPI.Controllerss
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        // GET: api/Users
+        //[HttpGet("{id}")]
+        [HttpGet]
+        public async Task<ActionResult<User>> GetUser()
         {
             if (_context.Users == null) return NotFound();
 
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            if (user == null || user.Id != id)
-                return BadRequest(new { errorText = "Login" });
-
-            user.Remedies = user.FindRemedies(_context);
+            //if (user == null || user.Id != id)
+            if (user == null) return BadRequest(new { errorText = "Login" });
+            user.NotificationSetting = await _context.NotificationSettings.Where
+                (n => n.Id == user.Id).FirstOrDefaultAsync();
 
             return user;
         }
 
         // сделать изменение пароля с подтверждением на почту
         // PUT: api/Users/5
-        [HttpPut("{id}, {name}, {avatar}")]
-        public async Task<IActionResult> PutUser(int id, string name="-1", string avatar="-1")
+        //[HttpPut("{id}, {name}, {avatar}")]
+        [HttpPut("{name}, {avatar}")]
+        public async Task<IActionResult> PutUser(string name="-1", string avatar="-1")
         {
             if (_context.Users == null) return NotFound();
 
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            if (user == null || user.Id != id) return NotFound();
+            if (user == null) return NotFound();
 
             if (name != "-1") user.Name = name;
             if (avatar != "-1") user.Avatar = avatar;
