@@ -29,23 +29,26 @@ namespace MedicineReminderAPI.Controllers
 
         // POST: api/Courses
         [HttpPost]
-        public async Task<ActionResult<Course>> PostCourse(Course course)
+        public async Task<ActionResult<List<Course>>> PostCourses(List<Course> courses)
         {
             if (_context.Courses == null) return Problem("Entity set 'AppApiContext.Courses'  is null.");
-
-            // проверка авторизации
+            if (courses == null || courses.Count == 0) return BadRequest(new { errorText = "No data" });
+            // проверка авторизации// получение авторизированного пользователя
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            var remedy = _context.Remedies.Where(c => c.Id == course.RemedyId).FirstOrDefault();
-            if (user == null || remedy == null || remedy.NotUsed == true || remedy.UserId != user.Id) 
+
+            foreach (var course in courses)
+            {            
+                var remedy = _context.Remedies.Where(c => c.Id == course.RemedyId).FirstOrDefault();
+                if (remedy == null || remedy.NotUsed == true || remedy.UserId != user.Id)
                     return BadRequest(new { errorText = "Incorrect data" });
 
-            //проверка валидации модели на успешность
-            if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+                //проверка валидации модели на успешность
+                if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+                _context.Courses.Add(course);
+            }
 
-            _context.Courses.Add(course);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCourse", new { id = course.Id }, course);
+            return CreatedAtAction("GetCourses", courses);
         }
 
         // GET: api/Courses/strategy?= "haveAttach"

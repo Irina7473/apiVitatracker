@@ -32,12 +32,12 @@ namespace MedicineReminderAPI.Controllers
 
         // POST: api/Remedies
         [HttpPost]
-        public async Task<ActionResult<List<Remedy>>> PostRemedy(List <Remedy> remedies)
+        public async Task<ActionResult<List<Remedy>>> PostRemedies(List <Remedy> remedies)
         {
             if (_context.Remedies == null) return Problem("Entity set 'AppApiContext.Remedies'  is null.");
-            // проверка авторизации
+            if (remedies == null || remedies.Count == 0) return BadRequest(new { errorText = "No data" });
+            // получение авторизированного пользователя
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            if (user == null) return BadRequest(new { errorText = "Login" });
 
             foreach (var remedy in remedies)
             {
@@ -46,8 +46,8 @@ namespace MedicineReminderAPI.Controllers
                 if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
                 _context.Remedies.Add(remedy);
             }
-            await _context.SaveChangesAsync();
 
+            await _context.SaveChangesAsync();
             return CreatedAtAction("GetRemedies", remedies);
         }
         

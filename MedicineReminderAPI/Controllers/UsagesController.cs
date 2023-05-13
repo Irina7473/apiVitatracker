@@ -28,26 +28,28 @@ namespace MedicineReminderAPI.Controllers
 
         // POST: api/Usages
         [HttpPost]
-        public async Task<ActionResult<Usage>> PostUsage(Usage usage)
+        public async Task<ActionResult<List<Usage>>> PostUsages(List<Usage> usages)
         {
             if (_context.Usages == null) return Problem("Entity set 'AppApiContext.Usages'  is null.");
-
-            // проверка авторизации
-            var course = _context.Courses.Where(c => c.Id == usage.CourseId).FirstOrDefault();
-            if (course == null || course.NotUsed == true) return BadRequest(new { errorText = "Incorrect data" });
-
+            if (usages == null || usages.Count == 0) return BadRequest(new { errorText = "No data" });
+            // получение авторизированного пользователя
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            var remedy = _context.Remedies.Where(c => c.Id == course.RemedyId).FirstOrDefault();
-            if (user == null || remedy == null || remedy.NotUsed == true || remedy.UserId != user.Id)
-                return BadRequest(new { errorText = "Incorrect data" });
 
-            //проверка валидации модели на успешность
-            if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+            foreach (var usage in usages)
+            {
+                var course = _context.Courses.Where(c => c.Id == usage.CourseId).FirstOrDefault();
+                if (course == null || course.NotUsed == true) return BadRequest(new { errorText = "Incorrect data" });
+                        
+                var remedy = _context.Remedies.Where(c => c.Id == course.RemedyId).FirstOrDefault();
+                if (remedy == null || remedy.NotUsed == true || remedy.UserId != user.Id)
+                    return BadRequest(new { errorText = "Incorrect data" });
 
-            _context.Usages.Add(usage);
+                //проверка валидации модели на успешность
+                if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+                _context.Usages.Add(usage);
+            }
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUsage", new { id = usage.Id }, usage);
+            return CreatedAtAction("GetUsages", usages);
         }
 
         // GET: api/Usages
