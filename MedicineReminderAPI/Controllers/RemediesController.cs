@@ -32,25 +32,28 @@ namespace MedicineReminderAPI.Controllers
 
         // POST: api/Remedies
         [HttpPost]
-        public async Task<ActionResult<Remedy>> PostRemedy(Remedy remedy)
+        public async Task<ActionResult<List<Remedy>>> PostRemedy(List <Remedy> remedies)
         {
             if (_context.Remedies == null) return Problem("Entity set 'AppApiContext.Remedies'  is null.");
             // проверка авторизации
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            if (user == null || remedy.UserId != user.Id) return BadRequest(new { errorText = "Incorrect data" });
+            if (user == null) return BadRequest(new { errorText = "Login" });
 
-            //проверка валидации модели на успешность
-            if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
-            
-            _context.Remedies.Add(remedy);
+            foreach (var remedy in remedies)
+            {
+                if (remedy.UserId != user.Id) return BadRequest(new { errorText = "Incorrect data" });
+                //проверка валидации модели на успешность
+                if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+                _context.Remedies.Add(remedy);
+            }
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRemedy", new { id = remedy.Id }, remedy);
+            return CreatedAtAction("GetRemedies", remedies);
         }
         
-        // GET: api/Remedies/strategy?= "add"
+        // GET: api/Remedies/strategy?= "haveAttach"
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedies(string strategy = "nude")
+        public async Task<ActionResult<IEnumerable<Remedy>>> GetRemedies(string strategy = "noAttach")
         {      
             if (_context.Remedies == null) return NotFound();
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
@@ -58,23 +61,22 @@ namespace MedicineReminderAPI.Controllers
             var remedies = user.FindRemedies(_context);
             
             if (remedies == null || remedies.Count == 0) return NotFound();
-            if (strategy!= "nude") 
-                foreach (var remedy in remedies) 
-                    FindRemedyWithCoursesAndUsages(remedy);
+            if (strategy != "haveAttach") strategy = "noAttach";
+            else foreach (var remedy in remedies) FindRemedyWithCoursesAndUsages(remedy);
 
             return remedies;
         }
 
-        // GET: api/Remedies/5 strategy?= "nude"
+        // GET: api/Remedies/5 strategy?= "noAttach"
         [HttpGet("{id}")]
-        public async Task<ActionResult<Remedy>> GetRemedy(int id, string strategy = "add")
+        public async Task<ActionResult<Remedy>> GetRemedy(int id, string strategy = "haveAttach")
         {
             if (_context.Remedies == null) return NotFound();
 
             var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
-            if (strategy == "add")
-                remedy = FindRemedyWithCoursesAndUsages(remedy);
+            if (strategy != "noAttach") strategy = "haveAttach";
+            else remedy = FindRemedyWithCoursesAndUsages(remedy);
 
             return remedy;
         }

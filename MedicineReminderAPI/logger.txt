@@ -3646,3 +3646,77 @@ SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`Next
 FROM `NotificationSettings` AS `n`
 WHERE `n`.`Id` = @__user_Id_0
 LIMIT 1
+Time:12.05.2023 23:31:14 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: G:\2BAD\VitatrackerB2\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (282ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (216ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (219ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `r`.`Id`, `r`.`BeforeFood`, `r`.`Color`, `r`.`Comment`, `r`.`Created`, `r`.`Description`, `r`.`Dose`, `r`.`Icon`, `r`.`MeasureUnit`, `r`.`Name`, `r`.`NotUsed`, `r`.`Photo`, `r`.`Type`, `r`.`Updated`, `r`.`UserId`
+FROM `Remedies` AS `r`
+WHERE (`r`.`UserId` = @__Id_0) AND NOT (`r`.`NotUsed`)
+Executed DbCommand (218ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (220ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (Size = 128), @p8='?' (Size = 4000), @p9='?' (DbType = Int32), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32), @p12='?' (DbType = Int32), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = Int32), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (Size = 128), @p19='?' (Size = 4000), @p20='?' (DbType = Int32), @p21='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Remedies` (`BeforeFood`, `Color`, `Comment`, `Description`, `Dose`, `Icon`, `MeasureUnit`, `Name`, `Photo`, `Type`, `UserId`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Remedies`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Remedies` (`BeforeFood`, `Color`, `Comment`, `Description`, `Dose`, `Icon`, `MeasureUnit`, `Name`, `Photo`, `Type`, `UserId`)
+VALUES (@p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Remedies`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (214ms) [Parameters=[@p22='?' (Size = 4000), @p23='?' (DbType = Int64), @p24='?' (DbType = Int64), @p25='?' (DbType = Int32), @p26='?' (DbType = Int32), @p27='?' (DbType = Int64), @p28='?' (DbType = Int64), @p29='?' (Size = 4000), @p30='?' (DbType = Int64), @p31='?' (DbType = Int64), @p32='?' (DbType = Int32), @p33='?' (DbType = Int32), @p34='?' (DbType = Int64), @p35='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Courses` (`Comment`, `EndDate`, `Interval`, `Regime`, `RemedyId`, `RemindDate`, `StartDate`)
+VALUES (@p22, @p23, @p24, @p25, @p26, @p27, @p28);
+SELECT `Id`, `Created`, `IsFinished`, `IsInfinite`, `NotUsed`, `Updated`
+FROM `Courses`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Courses` (`Comment`, `EndDate`, `Interval`, `Regime`, `RemedyId`, `RemindDate`, `StartDate`)
+VALUES (@p29, @p30, @p31, @p32, @p33, @p34, @p35);
+SELECT `Id`, `Created`, `IsFinished`, `IsInfinite`, `NotUsed`, `Updated`
+FROM `Courses`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (210ms) [Parameters=[@p36='?' (DbType = Int32), @p37='?' (DbType = Int64), @p38='?' (DbType = Int32), @p39='?' (DbType = Int64), @p40='?' (DbType = Int32), @p41='?' (DbType = Int64), @p42='?' (DbType = Int32), @p43='?' (DbType = Int64), @p44='?' (DbType = Int32), @p45='?' (DbType = Int64), @p46='?' (DbType = Int32), @p47='?' (DbType = Int64), @p48='?' (DbType = Int32), @p49='?' (DbType = Int64), @p50='?' (DbType = Int32), @p51='?' (DbType = Int64)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p36, @p37, @p38, @p39);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p40, @p41, @p42, @p43);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p44, @p45, @p46, @p47);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+
+INSERT INTO `Usages` (`CourseId`, `FactUseTime`, `Quantity`, `UseTime`)
+VALUES (@p48, @p49, @p50, @p51);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Usages`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();

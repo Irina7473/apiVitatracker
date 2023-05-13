@@ -48,9 +48,9 @@ namespace MedicineReminderAPI.Controllers
             return CreatedAtAction("GetCourse", new { id = course.Id }, course);
         }
 
-        // GET: api/Courses/strategy?= "add"
+        // GET: api/Courses/strategy?= "haveAttach"
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Course>>> GetCourses(string strategy = "nude")
+        public async Task<ActionResult<IEnumerable<Course>>> GetCourses(string strategy = "noAttach")
         {
            if (_context.Courses == null) return NotFound();
 
@@ -63,20 +63,21 @@ namespace MedicineReminderAPI.Controllers
                 courses.AddRange (await _context.Courses.Where(c => c.RemedyId == r.Id && c.NotUsed == false).ToListAsync());
             if (courses == null || courses.Count == 0) return NotFound();
 
-            if (strategy != "nude")
-                foreach (var course in courses) course.Usages = course.FindUsages(_context);
+            if (strategy != "haveAttach") strategy = "noAttach";
+            else foreach (var course in courses) course.Usages = course.FindUsages(_context);
             return courses;
         }
 
-        // GET: api/Courses/5 strategy?= "nude"
+        // GET: api/Courses/5 strategy?= "noAttach"
         [HttpGet("{id}")]
-        public async Task<ActionResult<Course>> GetCourse(int id, string strategy = "add")
+        public async Task<ActionResult<Course>> GetCourse(int id, string strategy = "haveAttach")
         {
             if (_context.Courses == null) return NotFound();
 
             var course = await FindCourseAsync(id);
             if (course == null) return NotFound();
-            if (strategy == "add") course.Usages = course.FindUsages(_context);
+            if (strategy != "noAttach") strategy = "haveAttach";
+            else course.Usages = course.FindUsages(_context);
 
             return course;
         }
