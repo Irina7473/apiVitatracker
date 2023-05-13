@@ -76,9 +76,8 @@ namespace MedicineReminderAPI.Controllers
             var remedy = await FindRemedyAsync(id);
             if (remedy == null) return NotFound();
             if (strategy != "noAttach") strategy = "haveAttach";
-            else remedy = FindRemedyWithCoursesAndUsages(remedy);
-
-            return remedy;
+            else return remedy;
+            return FindRemedyWithCoursesAndUsages(remedy);
         }
 
         // PUT: api/Remedies/5

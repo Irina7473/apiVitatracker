@@ -77,9 +77,8 @@ namespace MedicineReminderAPI.Controllers
             var course = await FindCourseAsync(id);
             if (course == null) return NotFound();
             if (strategy != "noAttach") strategy = "haveAttach";
-            else course.Usages = course.FindUsages(_context);
-
-            return course;
+            else return course;
+            return FindCoursesWithUsages(course);
         }
 
         // PUT: api/Courses/5
@@ -142,12 +141,12 @@ namespace MedicineReminderAPI.Controllers
 
             return course;
         }
-        /*
+        
         private Course FindCoursesWithUsages(Course course)
         {
             course.Usages = course.FindUsages(_context);
             return course;
-        }*/
+        }
 
     }
 }
