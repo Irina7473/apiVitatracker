@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tK6rnWjALyko40YdxDlHvyCmFz8Vtuab3iT7oP+NptxmXkjgn1vhYi1lTiao4ER665v64u64gDJ3xsddJO/9xw==",
+  "dgSpecHash": "wXl8nSnhez5rabFWKf8cw/ym3fkLMzo/6GCedztWOME/F1jnBnNKPTY2E1c5/9zZPSHXQRnL1F8WFv5H+6bk1Q==",
   "success": true,
-  "projectFilePath": "G:\\2BAD\\VitatrackerB2\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
+  "projectFilePath": "G:\\2BAD\\VitatrackerB4\\Vitatracker_Backend\\MedicineReminderAPI\\MedicineReminderAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Irina\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Irina\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
