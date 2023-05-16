@@ -400,4 +400,8 @@ FodyWeavers.xsd
 *.sln.iml
 .idea/
 
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+/Vitatracker_Backend/appsettings.json
+
 # End of https://www.toptal.com/developers/gitignore/api/csharp
