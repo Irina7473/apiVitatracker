@@ -42,7 +42,7 @@ namespace UMRapi.Controllers
 
             var token = new MyToken().GenerateToken(user);
 
-            return Content (token);
+            return CreatedAtAction("Authenticate", new { id = user.Id, token = token });
         }
       
 

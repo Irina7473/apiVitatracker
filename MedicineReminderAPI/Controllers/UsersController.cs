@@ -50,7 +50,7 @@ namespace MedicineReminderAPI.Controllerss
 
             var token = new MyToken().GenerateToken(user);
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, token);
+            return CreatedAtAction("GetUser", new { id = user.Id, token=token });
         }
 
         // GET: api/Users

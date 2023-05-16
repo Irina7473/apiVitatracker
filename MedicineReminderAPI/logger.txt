@@ -237,3 +237,39 @@ SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`Next
 FROM `NotificationSettings` AS `n`
 WHERE `n`.`UserId` = @__Id_0
 LIMIT 1
+Time:16.05.2023 23:20:04 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: G:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (287ms) [Parameters=[@__user_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM `Users` AS `u`
+    WHERE `u`.`Email` = @__user_Email_0)
+Executed DbCommand (221ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 64), @p2='?' (Size = 120), @p3='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `Users` (`Avatar`, `Email`, `Name`, `Password`)
+VALUES (@p0, @p1, @p2, @p3);
+SELECT `Id`, `Created`, `NotUsed`, `Updated`
+FROM `Users`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Executed DbCommand (223ms) [Parameters=[@p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO `NotificationSettings` (`IsEnabled`, `NextCourseStart`, `UserId`)
+VALUES (@p4, @p5, @p6);
+SELECT `Id`, `IsFloat`, `MedicalControl`
+FROM `NotificationSettings`
+WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+Time:16.05.2023 23:23:52 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: G:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (306ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
