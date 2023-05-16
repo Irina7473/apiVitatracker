@@ -48,7 +48,9 @@ namespace MedicineReminderAPI.Controllerss
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, await user.GetUserAsync(_context));
+            var token = new MyToken().GenerateToken(user);
+
+            return CreatedAtAction("GetUser", new { id = user.Id }, token);
         }
 
         // GET: api/Users
@@ -64,24 +66,25 @@ namespace MedicineReminderAPI.Controllerss
         }
                 
         // PUT: api/Users/5
-        [HttpPut("{name}, {avatar}")]
-        public async Task<IActionResult> PutUser(string name="-1", string avatar="-1")
+        [HttpPut]
+        public async Task<IActionResult> PutUser(User user)
         {
             if (_context.Users == null) return NotFound();
 
-            var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            if (user == null) return NotFound();
+            var auth = _autheUser.AuthorizedUser(HttpContext, _context);
+            if (auth == null || auth.Id != user.Id) return NotFound();
 
-            if (name != "-1") user.Name = name;
-            if (avatar != "-1") user.Avatar = avatar;
-            _context.Entry(user).State = EntityState.Modified;
+            auth.Name = user.Name;
+            auth.Avatar = user.Avatar;
+            auth.Email = user.Email;
+            auth.NotificationSetting = user.NotificationSetting;
+
+            // проверка валидации модели на успешность
+            if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
+            _context.Entry(auth).State = EntityState.Modified;
 
             try { await _context.SaveChangesAsync(); }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(user.Id)) return NotFound();
-                else throw;
-            }
+            catch (DbUpdateConcurrencyException)  { throw;}
 
             return NoContent();
         }
@@ -106,7 +109,7 @@ namespace MedicineReminderAPI.Controllerss
 
         private bool UserExists(int id)
         {
-            return (_context.Users?.Any(u => u.Id == id)).GetValueOrDefault();
+            return (_context.Users?.Any(u => u.Id == id && u.NotUsed==false)).GetValueOrDefault();
         }
 
 
