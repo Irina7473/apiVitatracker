@@ -48,9 +48,37 @@ namespace MedicineReminderAPI.Models
 
         public List<Remedy>? Remedies { get; set; }
 
+
+        public User() { }
+        
+        public User(User user)
+        {
+            Id = user.Id;
+            Name = user.Name;
+            Email = user.Email;
+            Avatar = user.Avatar;
+            NotificationSetting = user.NotificationSetting;
+            NotUsed = user.NotUsed;
+            Created = user.Created;
+            Updated = user.Updated;
+        }
+
+        public async Task<User> GetUserAsync(AppApiContext context)
+        {
+
+            this.NotificationSetting = await FindNotificationSettingsAsync(context);
+            return new User(this);
+        }
+
+        public async Task<NotificationSetting?> FindNotificationSettingsAsync(AppApiContext context)
+        {
+            return await context.NotificationSettings.Where(n => n.UserId == Id).FirstOrDefaultAsync();
+        }
+
         public List<Remedy> FindRemedies (AppApiContext context)
         {
-            return context.Remedies.Where(r => r.UserId == this.Id && r.NotUsed == false).ToList();
+            return context.Remedies.Where(r => r.UserId == Id && r.NotUsed == false).ToList();
         }
+
     }
 }

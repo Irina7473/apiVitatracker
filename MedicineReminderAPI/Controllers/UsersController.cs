@@ -48,28 +48,22 @@ namespace MedicineReminderAPI.Controllerss
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = user.Id }, await user.GetUserAsync(_context));
         }
 
         // GET: api/Users
-        //[HttpGet("{id}")]
         [HttpGet]
         public async Task<ActionResult<User>> GetUser()
         {
             if (_context.Users == null) return NotFound();
 
             var user = _autheUser.AuthorizedUser(HttpContext, _context);
-            //if (user == null || user.Id != id)
             if (user == null) return BadRequest(new { errorText = "Login" });
-            user.NotificationSetting = await _context.NotificationSettings.Where
-                (n => n.Id == user.Id).FirstOrDefaultAsync();
 
-            return user;
+            return await user.GetUserAsync(_context);
         }
-
-        // сделать изменение пароля с подтверждением на почту
+                
         // PUT: api/Users/5
-        //[HttpPut("{id}, {name}, {avatar}")]
         [HttpPut("{name}, {avatar}")]
         public async Task<IActionResult> PutUser(string name="-1", string avatar="-1")
         {
@@ -92,6 +86,8 @@ namespace MedicineReminderAPI.Controllerss
             return NoContent();
         }
 
+        //нужно техзадание на удаление пользователя
+        //нужно ли помечать notused все для этого user??
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
@@ -104,9 +100,6 @@ namespace MedicineReminderAPI.Controllerss
             user.NotUsed = true;        
             _context.Entry(user).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-
-            //выход из аккаунта
-            //нужно ли помечать notused все для этого user??
 
             return NoContent();
         }
