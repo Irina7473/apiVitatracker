@@ -29,7 +29,7 @@ namespace UMRapi.Controllers
 
         // POST: api/login
         [HttpPost]        
-        public IActionResult Token (Authenticate auth)
+        public IActionResult Authenticate(Authenticate auth)
         {
             if (_context.Users == null) return NotFound();
                        
@@ -42,7 +42,7 @@ namespace UMRapi.Controllers
 
             var token = new MyToken().GenerateToken(user);
 
-            return Content(token);
+            return CreatedAtAction("Authenticate", new { id = user.Id, token = token });
         }
       
 
