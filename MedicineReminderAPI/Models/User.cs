@@ -49,6 +49,15 @@ namespace MedicineReminderAPI.Models
         public List<Remedy>? Remedies { get; set; }
 
 
+        public User UpdateUser(string? name, string? email, string? avatar, NotificationSetting notifi)
+        {
+            if (name != null) this.Name = name;
+            if (email != null) this.Email = email;
+            if (avatar != null) this.Avatar = avatar;
+            if (notifi != null) this.NotificationSetting = notifi;
+            return this;
+        }
+
         public async Task<User> GetUserAsync(AppApiContext context)
         {
             this.password = "123456";

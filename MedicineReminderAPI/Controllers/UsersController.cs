@@ -73,11 +73,8 @@ namespace MedicineReminderAPI.Controllerss
 
             var auth = _autheUser.AuthorizedUser(HttpContext, _context);
             if (auth == null || auth.Id != user.Id) return NotFound();
-
-            auth.Name = user.Name;
-            auth.Avatar = user.Avatar;
-            auth.Email = user.Email;
-            auth.NotificationSetting = user.NotificationSetting;
+            
+            auth.UpdateUser(user.Name, user.Email, user.Avatar, user.NotificationSetting);
 
             // проверка валидации модели на успешность
             if (!ModelState.IsValid) return BadRequest(new ValidationProblemDetails(ModelState));
