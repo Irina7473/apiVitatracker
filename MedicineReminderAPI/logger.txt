@@ -826,3 +826,68 @@ SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`Next
 FROM `NotificationSettings` AS `n`
 WHERE `n`.`UserId` = @__Id_0
 LIMIT 1
+Time:24.05.2023 19:58:49 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: G:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (293ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@__auth_Email_0='?' (Size = 64)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE `u`.`Email` = @__auth_Email_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (222ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (219ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (220ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (218ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (218ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (224ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p13='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime), @p8='?' (Size = 64), @p9='?' (Size = 120), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+UPDATE `NotificationSettings` SET `IsEnabled` = @p0, `IsFloat` = @p1, `MedicalControl` = @p2, `NextCourseStart` = @p3, `UserId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+
+UPDATE `Users` SET `Avatar` = @p6, `Created` = @p7, `Email` = @p8, `Name` = @p9, `NotUsed` = @p10, `Password` = @p11, `Updated` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+Executed DbCommand (217ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (217ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
