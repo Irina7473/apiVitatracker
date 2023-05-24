@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedicineReminderAPI.Models
 {        
@@ -10,7 +11,7 @@ namespace MedicineReminderAPI.Models
         public bool IsEnabled { get; set; } = true;
         public bool IsFloat { get; set; } = false;
         public bool MedicalControl { get; set; } = false;
-        public bool NextCourseStart { get; set; } = true;
-        
+        public bool NextCourseStart { get; set; } = true;        
+       
     }
 }

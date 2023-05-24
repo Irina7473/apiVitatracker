@@ -70,6 +70,11 @@ namespace MedicineReminderAPI.Models
             return await context.NotificationSettings.Where(n => n.UserId == Id).FirstOrDefaultAsync();
         }
 
+        public NotificationSetting? FindNotificationSettings(AppApiContext context)
+        {
+            return context.NotificationSettings.Where(n => n.UserId == Id).FirstOrDefault();
+        }
+
         public List<Remedy> FindRemedies (AppApiContext context)
         {
             return context.Remedies.Where(r => r.UserId == Id && r.NotUsed == false).ToList();

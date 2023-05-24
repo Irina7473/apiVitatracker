@@ -574,3 +574,255 @@ WHERE `n`.`UserId` = @__Id_0
 LIMIT 1
 The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
 The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Time:24.05.2023 12:48:54 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (238ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+An exception occurred in the database while saving changes for context type 'MedicineReminderAPI.Models.AppApiContext'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+An unhandled exception has occurred while executing the request.
+Failed executing DbCommand (222ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+An exception occurred while iterating over the results of a query for context type 'MedicineReminderAPI.Models.AppApiContext'.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at MySqlConnector.MySqlDataReader.ActivateResultSet(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 111
+   at MySqlConnector.MySqlDataReader.CreateAsync(CommandListPosition commandListPosition, ICommandPayloadCreator payloadCreator, IDictionary`2 cachedProcedures, IMySqlCommand command, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 468
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/CommandExecutor.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 344
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 337
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Time:24.05.2023 12:58:17 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (243ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (213ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (202ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+An exception occurred in the database while saving changes for context type 'MedicineReminderAPI.Models.AppApiContext'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+An unhandled exception has occurred while executing the request.
+Failed executing DbCommand (1ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+An exception occurred while iterating over the results of a query for context type 'MedicineReminderAPI.Models.AppApiContext'.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'MySqlConnection'.
+   at MySqlConnector.MySqlConnection.VerifyNotDisposed() in /_/src/MySqlConnector/MySqlConnection.cs:line 1002
+   at MySqlConnector.MySqlConnection.get_Session() in /_/src/MySqlConnector/MySqlConnection.cs:line 745
+   at MySqlConnector.Core.ICancellableCommandExtensions.ResetCommandTimeout(ICancellableCommand command) in /_/src/MySqlConnector/Core/ICancellableCommand.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 342
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 337
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Time:24.05.2023 13:08:51 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (252ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (213ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+An exception occurred in the database while saving changes for context type 'MedicineReminderAPI.Models.AppApiContext'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+An unhandled exception has occurred while executing the request.
+Failed executing DbCommand (1ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+An exception occurred while iterating over the results of a query for context type 'MedicineReminderAPI.Models.AppApiContext'.
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'MySqlConnection'.
+   at MySqlConnector.MySqlConnection.VerifyNotDisposed() in /_/src/MySqlConnector/MySqlConnection.cs:line 1002
+   at MySqlConnector.MySqlConnection.get_Session() in /_/src/MySqlConnector/MySqlConnection.cs:line 745
+   at MySqlConnector.Core.ICancellableCommandExtensions.ResetCommandTimeout(ICancellableCommand command) in /_/src/MySqlConnector/Core/ICancellableCommand.cs:line 56
+   at MySqlConnector.MySqlCommand.ExecuteReaderAsync(CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 342
+   at MySqlConnector.MySqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlCommand.cs:line 337
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+Time:24.05.2023 13:14:48 Hello APP
+Now listening on: http://localhost:5292
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: J:\2BAD\VitatrackerB4\Vitatracker_Backend\MedicineReminderAPI
+The 'bool' property 'IsEnabled' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+The 'bool' property 'NextCourseStart' on entity type 'NotificationSetting' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+Executed DbCommand (237ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (210ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (203ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (205ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p13='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime), @p8='?' (Size = 64), @p9='?' (Size = 120), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+UPDATE `NotificationSettings` SET `IsEnabled` = @p0, `IsFloat` = @p1, `MedicalControl` = @p2, `NextCourseStart` = @p3, `UserId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+
+UPDATE `Users` SET `Avatar` = @p6, `Created` = @p7, `Email` = @p8, `Name` = @p9, `NotUsed` = @p10, `Password` = @p11, `Updated` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+Executed DbCommand (204ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p13='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime), @p8='?' (Size = 64), @p9='?' (Size = 120), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+UPDATE `NotificationSettings` SET `IsEnabled` = @p0, `IsFloat` = @p1, `MedicalControl` = @p2, `NextCourseStart` = @p3, `UserId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+
+UPDATE `Users` SET `Avatar` = @p6, `Created` = @p7, `Email` = @p8, `Name` = @p9, `NotUsed` = @p10, `Password` = @p11, `Updated` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+Executed DbCommand (204ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (204ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (210ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p13='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime), @p8='?' (Size = 64), @p9='?' (Size = 120), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+UPDATE `NotificationSettings` SET `IsEnabled` = @p0, `IsFloat` = @p1, `MedicalControl` = @p2, `NextCourseStart` = @p3, `UserId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+
+UPDATE `Users` SET `Avatar` = @p6, `Created` = @p7, `Email` = @p8, `Name` = @p9, `NotUsed` = @p10, `Password` = @p11, `Updated` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+Executed DbCommand (208ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (208ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p1='?' (DbType = Boolean), @p2='?' (DbType = Boolean), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p13='?' (DbType = Int32), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime), @p8='?' (Size = 64), @p9='?' (Size = 120), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+UPDATE `NotificationSettings` SET `IsEnabled` = @p0, `IsFloat` = @p1, `MedicalControl` = @p2, `NextCourseStart` = @p3, `UserId` = @p4
+WHERE `Id` = @p5;
+SELECT ROW_COUNT();
+
+UPDATE `Users` SET `Avatar` = @p6, `Created` = @p7, `Email` = @p8, `Name` = @p9, `NotUsed` = @p10, `Password` = @p11, `Updated` = @p12
+WHERE `Id` = @p13;
+SELECT ROW_COUNT();
+Executed DbCommand (208ms) [Parameters=[@__claim_Value_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT `u`.`Id`, `u`.`Avatar`, `u`.`Created`, `u`.`Email`, `u`.`Name`, `u`.`NotUsed`, `u`.`Password`, `u`.`Updated`
+FROM `Users` AS `u`
+WHERE CAST(`u`.`Id` AS char) = @__claim_Value_0
+LIMIT 1
+Executed DbCommand (209ms) [Parameters=[@__Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT `n`.`Id`, `n`.`IsEnabled`, `n`.`IsFloat`, `n`.`MedicalControl`, `n`.`NextCourseStart`, `n`.`UserId`
+FROM `NotificationSettings` AS `n`
+WHERE `n`.`UserId` = @__Id_0
+LIMIT 1
